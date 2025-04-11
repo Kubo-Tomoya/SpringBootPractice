@@ -1,8 +1,5 @@
 package com.example.demo.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +13,13 @@ import com.example.demo.entity.Contact;
 import com.example.demo.form.ContactForm;
 import com.example.demo.repository.ContactRepository;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 @Controller
-public class ContactController  {
-	
-	@Autowired
+public class ContactController {
+    
+    @Autowired
     private ContactRepository contactRepository;
 
     @GetMapping("/contact")
