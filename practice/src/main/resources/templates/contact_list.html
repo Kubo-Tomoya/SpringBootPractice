@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>お問い合わせ一覧</title>
+</head>
+<body>
+    <h1>お問い合わせ一覧</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>姓</th>
+            <th>名</th>
+            <th>お問い合わせ種別</th>
+            <th>作成日時</th>
+            <th>更新日時</th>
+        </tr>
+        <tr th:each="contact : ${contacts}">
+            <td th:text="${contact.id}">1</td>
+            <td th:text="${contact.lastName}">姓</td>
+            <td th:text="${contact.firstName}">名</td>
+            <td th:text="${contact.contactType}">種別</td>
+            <td th:text="${#temporals.format(contact.createdAt, 'yyyy-MM-dd HH:mm')}">作成日</td>
+            <td th:text="${#temporals.format(contact.updatedAt, 'yyyy-MM-dd HH:mm')}">更新日</td>
+			<td>
+			     <a th:href="@{/admin/contacts/{id}(id=${contact.id})}">詳細</a>
+			</td>
+		 </tr>
+    </table>
+	<div th:insert="fragments/footer :: footer"></div>
+
+</body>
+</html>
