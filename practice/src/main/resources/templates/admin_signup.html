@@ -9,8 +9,8 @@
 	<form th:action="@{/admin/signup}" th:object="${admin}" method="post">
 		<label>姓:<input type="text" th:field="*{lastName}"></label><br/>
 		<label>名:<input type="text"th:field="*{firstName}"></label><br/>
-		<label>メール:<input type="text" th:field="*{email}"></label><br/>
-		<label>パスワード:<input type="text" th:field="*{password}"></label><br/>
+		<label>メール:<input type="email" th:field="*{email}"></label><br/>
+		<label>パスワード:<input type="password" th:field="*{password}"></label><br/>
 		<button type="submit">登録</button>
 	</form>
 	<a th:href="@{/admin/signin}">ログイン画面へ</a>

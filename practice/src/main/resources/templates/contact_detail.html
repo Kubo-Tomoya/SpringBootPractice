@@ -8,8 +8,8 @@
     <h1>お問い合わせ詳細</h1>
     <p>お問い合わせID: <span th:text="${contact.id}"></span></p>
     <p>姓: <span th:text="${contact.lastName}"></span></p>
-	<p>名: <span th:text="${contact.firstName}"></span></p>
-	<p>メールアドレス: <span th:text="${contact.email}"></span></p>
+    <p>名: <span th:text="${contact.firstName}"></span></p>
+    <p>メールアドレス: <span th:text="${contact.email}"></span></p>
     <p>電話番号: <span th:text="${contact.phone}"></span></p>
     <p>郵便番号: <span th:text="${contact.zipCode}"></span></p>
     <p>住所: <span th:text="${contact.address}"></span></p>
@@ -20,9 +20,9 @@
     <p>更新日時: <span th:text="${contact.updatedAt}"></span></p>
 
     <a th:href="@{/admin/contacts}">一覧に戻る</a>
-	<a th:href="@{/admin/contacts/{id}/edit(id=${contact.id})}">編集する</a>
+    <a th:href="@{/admin/contacts/{id}/edit(id=${contact.id})}">編集する</a>
 	
-	<div th:insert="fragments/footer :: footer"></div>
+    <div th:insert="fragments/footer :: footer"></div>
 
 </body>
 </html>

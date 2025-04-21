@@ -22,12 +22,12 @@
             <td th:text="${contact.contactType}">種別</td>
             <td th:text="${#temporals.format(contact.createdAt, 'yyyy-MM-dd HH:mm')}">作成日</td>
             <td th:text="${#temporals.format(contact.updatedAt, 'yyyy-MM-dd HH:mm')}">更新日</td>
-			<td>
+            <td>
 			     <a th:href="@{/admin/contacts/{id}(id=${contact.id})}">詳細</a>
-			</td>
+             </td>
 		 </tr>
     </table>
-	<div th:insert="fragments/footer :: footer"></div>
+    <div th:insert="fragments/footer :: footer"></div>
 
 </body>
 </html>

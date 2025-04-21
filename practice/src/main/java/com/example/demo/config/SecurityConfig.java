@@ -12,35 +12,29 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-	
-
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-	    http
-	    	.csrf(csrf -> csrf.disable())
-	        .authorizeHttpRequests(auth -> auth
-	            .requestMatchers("/admin/signup", "/admin/signin", "/css/**").permitAll()
-	            .requestMatchers("/contact/**").permitAll()
-	            .requestMatchers("/admin/**").authenticated()
-	        )
-	        .formLogin(form -> form
-	            .loginPage("/admin/signin")
-	            .loginProcessingUrl("/admin/signin")
-	            .defaultSuccessUrl("/admin/contacts",true) 
-	            .permitAll()
-	        )
-	        .logout(logout -> logout
-	            .logoutUrl("/admin/signout")
-	            .logoutSuccessUrl("/admin/signin")
-	        );
+		http
+				.csrf(csrf -> csrf.disable())
+				.authorizeHttpRequests(auth -> auth
+						.requestMatchers("/admin/signup", "/admin/signin", "/css/**").permitAll()
+						.requestMatchers("/contact/**").permitAll()
+						.requestMatchers("/admin/**").authenticated())
+				.formLogin(form -> form
+						.loginPage("/admin/signin")
+						.loginProcessingUrl("/admin/signin")
+						.defaultSuccessUrl("/admin/contacts", true)
+						.permitAll())
+				.logout(logout -> logout
+						.logoutUrl("/admin/signout")
+						.logoutSuccessUrl("/admin/signin"));
 
-	    return http.build();
+		return http.build();
 	}
 
-
-	    @Bean
-	    public PasswordEncoder passwordEncoder() {
-	        return new BCryptPasswordEncoder(); 
-	    }
-	    
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
+
+}

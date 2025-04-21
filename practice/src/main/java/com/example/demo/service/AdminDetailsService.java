@@ -16,19 +16,17 @@ import com.example.demo.repository.Adminrepository;
 @Service
 public class AdminDetailsService implements UserDetailsService {
 
-    @Autowired
-    private Adminrepository adminRepo;
+	@Autowired
+	private Adminrepository adminRepo;
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Admin admin = adminRepo.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("メールアドレスが見つかりません: " + email));
+	@Override
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		Admin admin = adminRepo.findByEmail(email)
+				.orElseThrow(() -> new UsernameNotFoundException("メールアドレスが見つかりません: " + email));
 
-        return new User(
-                admin.getEmail(),
-                admin.getPassword(),
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN"))
-        );
-    }
+		return new User(
+				admin.getEmail(),
+				admin.getPassword(),
+				Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN")));
+	}
 }
-

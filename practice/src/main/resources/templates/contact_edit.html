@@ -7,33 +7,51 @@
 <body>
     <h1>お問い合わせ編集</h1>
 
-    <form th:action="@{/admin/contacts/{id}/edit(id=${contact.id})}" th:object="${contact}" method="post">
+    <form th:action="@{/admin/contacts/{id}/edit(id=${contactId})}" 
+          th:object="${contactForm}" method="post">
+
         <label>姓: <input type="text" th:field="*{lastName}" /></label><br/>
+        <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+
         <label>名: <input type="text" th:field="*{firstName}" /></label><br/>
+        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+
         <label>メールアドレス: <input type="email" th:field="*{email}" /></label><br/>
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
         <label>電話番号: <input type="text" th:field="*{phone}" /></label><br/>
+        <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+
         <label>郵便番号: <input type="text" th:field="*{zipCode}" /></label><br/>
+        <div th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}"></div>
+
         <label>住所: <input type="text" th:field="*{address}" /></label><br/>
+        <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+
         <label>建物名: <input type="text" th:field="*{buildingName}" /></label><br/>
+        <div th:if="${#fields.hasErrors('buildingName')}" th:errors="*{buildingName}"></div>
+
         <label>お問い合わせ種別: <input type="text" th:field="*{contactType}" /></label><br/>
+        <div th:if="${#fields.hasErrors('contactType')}" th:errors="*{contactType}"></div>
+
         <label>内容:<br/>
             <textarea th:field="*{body}"></textarea>
         </label><br/>
-        
+        <div th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></div>
+
         <button type="submit">更新する</button>
     </form>
-	
-	
-	<form th:action="@{/admin/contacts/{id}/delete(id=${contact.id})}" method="post"
-	      onsubmit="return confirm('本当に削除しますか？');">
-	    <button type="submit">削除する</button>
-	</form>
 
-	<br/>
-	<a th:href="@{/admin/contacts}">← 一覧に戻る</a>
+    <form th:action="@{/admin/contacts/{id}/delete(id=${contactId})}" method="post"
+          onsubmit="return confirm('本当に削除しますか？');">
+        <button type="submit">削除する</button>
+    </form>
+
+    <br/>
+    <a th:href="@{/admin/contacts}">← 一覧に戻る</a>
 
 	
-	<div th:insert="fragments/footer :: footer"></div>
+    <div   th:insert="fragments/footer :: footer"></div>
 
 	
 </body>

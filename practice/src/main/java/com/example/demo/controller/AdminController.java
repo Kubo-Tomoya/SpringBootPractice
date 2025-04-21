@@ -18,45 +18,41 @@ import com.example.demo.service.AdminService;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @Autowired
-    private AdminService adminService;
+	@Autowired
+	private AdminService adminService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
-    //管理者新規登録画面表示
-    @GetMapping("/signup")
-    public String showSignupForm(Model model) {
-    	System.out.println("これできんとおわですわ");
-        model.addAttribute("admin", new Admin());
-        return "admin_signup";
-    }
-    //管理者登録処理
-    
-    @PostMapping("/signup")
-    public String processSignup(@ModelAttribute Admin admin) {
-    	System.out.println("これできんとおわですわ");
-    	adminService.register(admin);
-    	
-    	System.out.println("PostMapping");
-    	
-    	return "redirect:/admin/signin";
-    }
+	//管理者新規登録画面表示
+	@GetMapping("/signup")
+	public String showSignupForm(Model model) {
 
-    //管理者ログイン画面表示
-    @GetMapping("/signin")
-    public String showSigninForm() {
-        return "admin_signin";
-    }
-    
-   
- 
-    
-    //ログアウト処理
-    @GetMapping("/signout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/admin/signin";
-    }
+		model.addAttribute("admin", new Admin());
+		return "admin_signup";
+	}
+	//管理者登録処理
+
+	@PostMapping("/signup")
+	public String processSignup(@ModelAttribute Admin admin) {
+
+		adminService.register(admin);
+
+		System.out.println("PostMapping");
+
+		return "redirect:/admin/signin";
+	}
+
+	//管理者ログイン画面表示
+	@GetMapping("/signin")
+	public String showSigninForm() {
+		return "admin_signin";
+	}
+
+	//ログアウト処理
+	@GetMapping("/signout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/admin/signin";
+	}
 }
-

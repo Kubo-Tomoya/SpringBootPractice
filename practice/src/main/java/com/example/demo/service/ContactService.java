@@ -11,11 +11,10 @@ import com.example.demo.repository.ContactRepository;
 @Service
 public class ContactService {
 
-    @Autowired
-    private ContactRepository contactRepository;
+	@Autowired
+	private ContactRepository contactRepository;
 
-    public List<Contact> findAll() {
-        return contactRepository.findAll();
-    }
+	public List<Contact> findAll() {
+		return contactRepository.findAll();
+	}
 }
-
