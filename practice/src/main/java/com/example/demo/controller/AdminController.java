@@ -38,8 +38,6 @@ public class AdminController {
 
 		adminService.register(admin);
 
-		System.out.println("PostMapping");
-
 		return "redirect:/admin/signin";
 	}
 
