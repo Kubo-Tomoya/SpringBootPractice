@@ -38,6 +38,7 @@ public class AdminController {
 
 		adminService.register(admin);
 
+
 		return "redirect:/admin/signin";
 	}
 
