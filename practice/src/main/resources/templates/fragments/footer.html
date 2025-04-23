@@ -1,0 +1,8 @@
+<div th:fragment="footer">
+    <form th:action="@{/admin/signout}" method="post"
+    onsubmit="return confirm('ログアウトしますか？');">
+		
+        <button type="submit">ログアウト</button>
+		
+    </form>
+</div>
